@@ -1,4 +1,4 @@
-export interface WeatherResponse {
+export interface Weather {
   main: {
     temp: number;
     humidity: number;

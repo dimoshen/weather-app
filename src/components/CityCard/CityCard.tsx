@@ -1,16 +1,16 @@
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
-import { fetchWeather } from "@/lib/api";
-import { WeatherResponse } from "@/types/WeatherResponse";
+import { fetchWeather } from "@/lib/api/weather";
+import { Weather } from "@/types/Weather";
 
-type Props = {
+interface Props {
   id: string;
   name: string;
   onDelete: (id: string) => void;
-};
+}
 
 const CityCard = ({ id, name, onDelete }: Props) => {
-  const { data, isLoading, error, refetch } = useQuery<WeatherResponse>({
+  const { data, isLoading, error, refetch } = useQuery<Weather>({
     queryKey: ["weather", name],
     queryFn: () => fetchWeather(name),
   });

@@ -2,13 +2,14 @@
 
 import { use } from "react";
 import {useQuery} from "@tanstack/react-query";
-import {fetchWeather} from "@/lib/api";
+import {fetchWeather} from "@/lib/api/weather";
+import TemperatureChart from "@/components/TemperatureForecast/TemperatureForecast";
 
-type Props = {
+interface Props {
   params: Promise<{
     name: string;
   }>;
-};
+}
 
 const CityPage = ({ params }: Props) => {
   const { name } = use(params);
@@ -34,6 +35,8 @@ const CityPage = ({ params }: Props) => {
               width={100}
               height={100}
             />
+            <p>{data.main.temp}°C</p>
+            <TemperatureChart city={name} />
           </>
         )
       }
