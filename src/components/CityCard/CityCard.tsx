@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { fetchWeather } from "@/lib/api";
 import { WeatherResponse } from "@/types/WeatherResponse";
@@ -16,7 +17,10 @@ const CityCard = ({ id, name, onDelete }: Props) => {
 
   return (
     <div>
-      <h3>{name}</h3>
+
+      <Link href={`/city/${name}`}>
+        <h3>{name}</h3>
+      </Link>
 
       {isLoading && <p>Loading...</p>}
       {error && <p>Error loading weather</p>}

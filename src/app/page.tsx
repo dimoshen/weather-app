@@ -7,17 +7,21 @@ import CityCard from "@/components/CityCard/CityCard";
 export default function Home() {
   const [cities, setCities] = useState<City[]>([]);
   const [input, setInput] = useState("");
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem("cities");
     if (saved) {
       setCities(JSON.parse(saved));
     }
+    setIsInitialized(true);
+    console.log(localStorage.getItem("cities"));
   }, []);
 
   useEffect(() => {
+    if (!isInitialized) return;
     localStorage.setItem("cities", JSON.stringify(cities));
-  }, [cities]);
+  }, [cities, isInitialized]);
 
   const addCity = () => {
     if (!input.trim()) return;
@@ -55,7 +59,12 @@ export default function Home() {
 
       <ul>
         {cities.map(({ id, name }) => (
-          <CityCard key={id} id={id} name={name} onDelete={removeCity} />
+            <CityCard
+              key={id}
+              id={id}
+              name={name}
+              onDelete={removeCity}
+            />
         ))}
       </ul>
     </main>
