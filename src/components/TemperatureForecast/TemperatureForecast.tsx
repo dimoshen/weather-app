@@ -1,6 +1,6 @@
 import {useQuery} from "@tanstack/react-query";
 import {Forecast} from "@/types/Forecast";
-import {fetchForecast} from "@/lib/api/forecast";
+import {fetchForecast} from "@/lib/api/getForecast";
 import {getNext24HoursForecast} from "@/lib/utils/getTodayForecast";
 import TemperatureChart from "@/components/TemperatureChart/TemperatureChart";
 

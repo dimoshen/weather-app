@@ -1,6 +1,5 @@
-@import "tailwindcss";
-@import "../styles/reset.scss";
-@import "../styles/variables.scss";
+@use "../styles/reset.scss";
+@use "../styles/variables.scss";
 
 body {
   color: #1a1a1a;

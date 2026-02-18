@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
-import { fetchWeather } from "@/lib/api/weather";
+import { fetchWeather } from "@/lib/api/getWeather";
 import { Weather } from "@/types/Weather";
 import RefreshIcon from "@/components/icons/RefreshIcon";
 import DeleteIcon from "@/components/icons/DeleteIcon";
@@ -10,19 +10,20 @@ import styles from "./CityCard.module.scss";
 
 interface Props {
   id: string;
-  name: string;
+  city: string;
+  country: string;
   onDelete: (id: string) => void;
 }
 
-const CityCard = ({ id, name, onDelete }: Props) => {
+const CityCard = ({ id, city, country, onDelete }: Props) => {
   const { data, isLoading, error, refetch } = useQuery<Weather>({
-    queryKey: ['weather', name],
-    queryFn: () => fetchWeather(name),
+    queryKey: ['weather', city, country],
+    queryFn: () => fetchWeather(city, country),
   });
 
   return (
     <div className={styles['city-card']}>
-      <h3 className={styles['city-card__title']}>{name}</h3>
+      <h3 className={styles['city-card__title']}>{`${city}, ${country}`}</h3>
 
       {isLoading && <p>Loading...</p>}
       {error && <p>Error loading weather</p>}
@@ -46,7 +47,7 @@ const CityCard = ({ id, name, onDelete }: Props) => {
 
       <div className={styles['city-card__actions']}>
         <Link
-          href={`/city/${name}`}
+          href={`/city/${city}`}
           className={styles['city-card__button']}
         >
           Details

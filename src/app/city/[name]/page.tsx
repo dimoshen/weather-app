@@ -2,7 +2,7 @@
 
 import { use } from "react";
 import {useQuery} from "@tanstack/react-query";
-import {fetchWeather} from "@/lib/api/weather";
+import {fetchWeather} from "@/lib/api/getWeather";
 import TemperatureChart from "@/components/TemperatureForecast/TemperatureForecast";
 
 interface Props {

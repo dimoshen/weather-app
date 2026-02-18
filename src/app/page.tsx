@@ -3,13 +3,12 @@
 import { useState, useEffect } from "react";
 import { City } from "@/types/City";
 import CityCard from "@/components/CityCard/CityCard";
-import {formatCityName} from "@/lib/utils/formatCityName";
 
 import styles from "./page.module.scss";
+import CitySearchForm from "@/components/CitySearchFrom/CitySearchForm";
 
 export default function Home() {
   const [cities, setCities] = useState<City[]>([]);
-  const [input, setInput] = useState("");
   const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
@@ -26,29 +25,6 @@ export default function Home() {
     localStorage.setItem("cities", JSON.stringify(cities));
   }, [cities, isInitialized]);
 
-  const addCity = () => {
-    if (!input.trim()) return;
-
-    const formattedName = formatCityName(input);
-
-    if (
-      cities.some(
-        (c) => c.name.toLowerCase() === formattedName.toLowerCase()
-      )
-    ) {
-      return;
-    }
-
-    const newCity = {
-      id: crypto.randomUUID(),
-      name: formattedName,
-    };
-
-    setCities((prev) => [...prev, newCity]);
-    setInput("");
-  };
-
-
   const removeCity = (id: string) => {
     setCities((prev) => prev.filter((city) => city.id !== id));
   };
@@ -58,28 +34,18 @@ export default function Home() {
       <div className={styles["home__container"]}>
         <h1 className={styles["home__title"]}>Weather App</h1>
 
-        <div className={styles["home__form"]}>
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Enter city name"
-            className={styles["home__input"]}
-          />
-          <button
-            onClick={addCity}
-            className={styles["home__button"]}
-          >
-            Add
-          </button>
-        </div>
+        <CitySearchForm
+          cities={cities}
+          setCities={setCities}
+        />
 
         <div className={styles["home__cards"]}>
-          {cities.map(({ id, name }) => (
+          {cities.map(({ id, city, country }) => (
             <CityCard
               key={id}
               id={id}
-              name={name}
+              city={city}
+              country={country}
               onDelete={removeCity}
             />
           ))}
