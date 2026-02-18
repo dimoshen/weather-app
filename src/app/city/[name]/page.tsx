@@ -20,7 +20,7 @@ const CityPage = ({ params }: Props) => {
   });
 
   return (
-    <div>
+    <main>
       <h1>City: {name}</h1>
 
       {isLoading && <p>Loading...</p>}
@@ -40,7 +40,7 @@ const CityPage = ({ params }: Props) => {
           </>
         )
       }
-    </div>
+    </main>
   );
 }
 

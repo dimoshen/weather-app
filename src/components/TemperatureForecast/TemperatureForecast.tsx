@@ -25,7 +25,6 @@ const TemperatureForecast = ({ city }: Props) => {
     <div>
       <h3>Today hourly temperature</h3>
       <TemperatureChart data={forecastData} />
-      <pre>{JSON.stringify(forecastData, null, 2)}</pre>
     </div>
   )
 }

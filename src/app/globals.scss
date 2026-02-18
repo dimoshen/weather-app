@@ -1,0 +1,22 @@
+@import "tailwindcss";
+@import "../styles/reset.scss";
+@import "../styles/variables.scss";
+
+body {
+  color: #1a1a1a;
+}
+
+.input-field {
+  height: 48px;
+  width: 90%;
+  gap: 0.5rem;
+  border-radius: 8px;
+  border-width: 1px;
+  border-style: solid;
+  --tw-border-opacity: 1;
+  border-color: rgb(209 209 209 / var(--tw-border-opacity, 1));
+  padding: 0.5rem;
+  opacity: 1;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
