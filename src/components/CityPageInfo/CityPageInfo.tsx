@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { fetchWeather } from "@/lib/api/getWeather";
+import { fetchWeather } from "@/lib/api/fetchWeather";
 import TemperatureChart from "@/components/TemperatureForecast/TemperatureForecast";
 
 import styles from '@/components/CityPageInfo/CityPageInfo.module.scss'

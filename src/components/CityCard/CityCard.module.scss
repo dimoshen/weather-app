@@ -1,8 +1,6 @@
 .city-card {
   padding: 28px;
-
-  min-width: 300px;
-  max-width: 400px;
+  width: 300px;
   min-height: 340px;
 
   border: 1px solid #f1efef;
@@ -46,7 +44,7 @@
   }
 
   &__button {
-    flex: 1; // кнопка займає весь простір
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,6 +57,11 @@
 
     &:hover {
       opacity: 0.9;
+    }
+
+    &--disabled {
+      opacity: 0.9;
+      background: #8a8787;
     }
   }
 
@@ -88,5 +91,15 @@
 
   &__refresh:hover svg {
     transform: rotate(180deg);
+  }
+
+  &__error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    font-size: 28px;
+    color: red;
+    text-align: center;
   }
 }

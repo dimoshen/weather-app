@@ -3,12 +3,14 @@
 import { useState } from "react";
 import { Dispatch, SetStateAction } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { searchCities } from "@/lib/api/getCitiesList";
+import toast from "react-hot-toast";
+import { searchCities } from "@/lib/api/searchCities";
 import { formatCityName } from "@/lib/utils/formatCityName";
 import { City } from "@/types/City";
 import { CitySuggestion } from "@/types/CitySuggestion";
 
 import styles from "@/components/CitySearchFrom/CitySearchForm.module.scss";
+import LoaderComponent from "@/components/ui/LoaderComponent/LoaderComponent";
 
 interface Props {
   cities: City[];
@@ -17,10 +19,20 @@ interface Props {
 
 export const CitySearchForm = ({ cities, setCities }: Props) => {
   const [input, setInput] = useState("");
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [selectedCity, setSelectedCity] = useState<CitySuggestion | null>(null);
 
   const { data } = useQuery<CitySuggestion[]>({
     queryKey: ["citySearch", input],
-    queryFn: () => searchCities(input),
+    queryFn: async () => {
+      const result = await searchCities(input);
+
+      return result.filter((city: CitySuggestion, index: number, self: CitySuggestion[]) =>
+        index === self.findIndex((c) =>
+            c.name === city.name && c.country === city.country
+        ),
+      );
+    },
     enabled: input.length > 2,
   });
 
@@ -28,7 +40,6 @@ export const CitySearchForm = ({ cities, setCities }: Props) => {
     if (!input.trim()) return;
 
     const parts = input.split(",");
-
     if (parts.length < 2) return;
 
     const cityName = formatCityName(parts[0].trim());
@@ -41,6 +52,8 @@ export const CitySearchForm = ({ cities, setCities }: Props) => {
           c.country.toLowerCase() === countryCode.toLowerCase(),
       )
     ) {
+      setSelectedCity(null);
+      toast.error("City already exists");
       return;
     }
 
@@ -52,6 +65,10 @@ export const CitySearchForm = ({ cities, setCities }: Props) => {
 
     setCities((prev) => [...prev, newCity]);
     setInput("");
+    setShowSuggestions(false);
+    setSelectedCity(null);
+
+    toast.success(`${cityName}, ${countryCode} added`);
   };
 
   return (
@@ -59,17 +76,28 @@ export const CitySearchForm = ({ cities, setCities }: Props) => {
       <input
         type="text"
         value={input}
-        onChange={(e) => setInput(e.target.value)}
+        onChange={(e) => {
+          setInput(e.target.value);
+          setShowSuggestions(true);
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" && selectedCity) {
+            e.preventDefault();
+            addCity();
+          }
+        }}
         placeholder="Enter city name"
         className={styles["search-form__input"]}
       />
-      {data && data.length > 0 && (
+      {showSuggestions && data && data.length > 0 && (
         <ul className={styles["search-form__suggestions"]}>
           {data.map((city: CitySuggestion) => (
             <li
               key={`${city.lat}-${city.lon}`}
               onClick={() => {
                 setInput(`${city.name}, ${city.country}`);
+                setShowSuggestions(false);
+                setSelectedCity(city);
               }}
             >
               {city.name}, {city.country}
@@ -77,10 +105,14 @@ export const CitySearchForm = ({ cities, setCities }: Props) => {
           ))}
         </ul>
       )}
-
-      <button onClick={addCity} className={styles["search-form__button"]}>
-        Add
-      </button>
+      {selectedCity && (
+        <button
+          onClick={addCity}
+          className={styles["search-form__button"]}
+        >
+          Add
+        </button>
+      )}
     </div>
   );
 };

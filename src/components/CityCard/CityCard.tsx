@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
-import { fetchWeather } from "@/lib/api/getWeather";
+import { fetchWeather } from "@/lib/api/fetchWeather";
 import { formatCityName } from "@/lib/utils/formatCityName";
 import RefreshIcon from "@/components/icons/RefreshIcon";
 import DeleteIcon from "@/components/icons/DeleteIcon";
@@ -28,7 +28,7 @@ const CityCard = ({ id, city, country, onDelete }: Props) => {
       <h3 className={styles["city-card__title"]}>{`${city}, ${country}`}</h3>
 
       {isLoading && <LoaderComponent />}
-      {error && <p>Error loading weather</p>}
+      {error && <div className={styles["city-card__error"]}>Data not found</div>}
 
       {data && (
         <>
@@ -44,11 +44,19 @@ const CityCard = ({ id, city, country, onDelete }: Props) => {
           </p>
         </>
       )}
-
       <div className={styles["city-card__actions"]}>
-        <Link href={`/city/${encodeURIComponent(`${city}-${country}`)}`} className={styles["city-card__button"]}>
-          Details
-        </Link>
+        {error || isLoading ? (
+          <span className={`${styles["city-card__button"]} ${styles["city-card__button--disabled"]}`}>
+            Details
+          </span>
+        ) : (
+          <Link
+            href={`/city/${encodeURIComponent(`${city}-${country}`)}`}
+            className={styles["city-card__button"]}
+          >
+            Details
+          </Link>
+        )}
 
         <div className={styles["city-card__icons"]}>
           <button

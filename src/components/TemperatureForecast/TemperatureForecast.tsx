@@ -2,7 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { Forecast } from "@/types/Forecast";
-import { fetchForecast } from "@/lib/api/getForecast";
+import { fetchForecast } from "@/lib/api/fetchForecast";
 import { getNext24HoursForecast } from "@/lib/utils/getTodayForecast";
 import {
   AreaChart,
