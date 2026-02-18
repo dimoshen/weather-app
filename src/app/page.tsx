@@ -18,7 +18,6 @@ export default function Home() {
       setCities(JSON.parse(saved));
     }
     setIsInitialized(true);
-    console.log(localStorage.getItem("cities"));
   }, []);
 
   useEffect(() => {
