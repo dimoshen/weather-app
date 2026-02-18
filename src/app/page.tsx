@@ -14,6 +14,7 @@ export default function Home() {
   useEffect(() => {
     const saved = localStorage.getItem("cities");
     if (saved) {
+      // This effect runs once
       setCities(JSON.parse(saved));
     }
     setIsInitialized(true);
@@ -34,20 +35,11 @@ export default function Home() {
       <div className={styles["home__container"]}>
         <h1 className={styles["home__title"]}>Weather App</h1>
 
-        <CitySearchForm
-          cities={cities}
-          setCities={setCities}
-        />
+        <CitySearchForm cities={cities} setCities={setCities} />
 
         <div className={styles["home__cards"]}>
           {cities.map(({ id, city, country }) => (
-            <CityCard
-              key={id}
-              id={id}
-              city={city}
-              country={country}
-              onDelete={removeCity}
-            />
+            <CityCard key={id} id={id} city={city} country={country} onDelete={removeCity} />
           ))}
         </div>
       </div>

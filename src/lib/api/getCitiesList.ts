@@ -1,4 +1,4 @@
-import {API_KEY} from "@/lib/constants";
+import { API_KEY } from "@/lib/constants";
 
 export async function searchCities(query: string) {
   const response = await fetch(

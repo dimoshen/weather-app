@@ -1,0 +1,17 @@
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+
+  &__icon {
+    animation: spin 1s linear infinite;
+    color: #fbbc04;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

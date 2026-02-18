@@ -1,13 +1,14 @@
-"use client"
+"use client";
 
+import { useState } from "react";
 import { Dispatch, SetStateAction } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { searchCities } from "@/lib/api/getCitiesList";
+import { formatCityName } from "@/lib/utils/formatCityName";
+import { City } from "@/types/City";
+import { CitySuggestion } from "@/types/CitySuggestion";
+
 import styles from "@/components/CitySearchFrom/CitySearchForm.module.scss";
-import {useQuery} from "@tanstack/react-query";
-import {useState} from "react";
-import {searchCities} from "@/lib/api/getCitiesList";
-import {formatCityName} from "@/lib/utils/formatCityName";
-import {City} from "@/types/City";
-import {CitySuggestion} from "@/types/CitySuggestion";
 
 interface Props {
   cities: City[];
@@ -37,7 +38,7 @@ export const CitySearchForm = ({ cities, setCities }: Props) => {
       cities.some(
         (c) =>
           c.city.toLowerCase() === cityName.toLowerCase() &&
-          c.country.toLowerCase() === countryCode.toLowerCase()
+          c.country.toLowerCase() === countryCode.toLowerCase(),
       )
     ) {
       return;
@@ -77,14 +78,11 @@ export const CitySearchForm = ({ cities, setCities }: Props) => {
         </ul>
       )}
 
-      <button
-        onClick={addCity}
-        className={styles["search-form__button"]}
-      >
+      <button onClick={addCity} className={styles["search-form__button"]}>
         Add
       </button>
     </div>
-  )
-}
+  );
+};
 
 export default CitySearchForm;

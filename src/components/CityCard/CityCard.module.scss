@@ -3,8 +3,9 @@
 
   min-width: 300px;
   max-width: 400px;
+  min-height: 340px;
 
-  border: 1px solid #e7e7e7;
+  border: 1px solid #f1efef;
   border-radius: 24px;
 
   display: flex;
@@ -34,21 +35,22 @@
   &__description {
     font-size: 14px;
     font-weight: 500;
-    margin-bottom: 8px;
+    margin-bottom: 15px;
   }
 
   &__actions {
     display: flex;
     width: 100%;
+    gap: 12px;
+    align-items: center;
   }
 
   &__button {
+    flex: 1; // кнопка займає весь простір
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
     height: 40px;
-    margin-top: 20px;
     background: #0097b2;
     color: white;
     font-weight: 400;
@@ -60,14 +62,31 @@
     }
   }
 
-  &__refresh {
+  &__icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__refresh,
+  &__delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
 
     svg {
       transition: transform 0.4s ease;
     }
+  }
 
-    &:hover svg {
-      transform: rotate(180deg);
-    }
+  &__refresh:hover svg {
+    transform: rotate(180deg);
   }
 }
