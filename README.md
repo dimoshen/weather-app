@@ -7,7 +7,7 @@ Single Page Application for viewing weather in selected cities.
 ## 🚀 Live Demo
 
 👉 Deployed on Vercel  
-https://weather-cpbv4f663-dimoshens-projects.vercel.app/
+https://weather-app-dimoshens-projects.vercel.app/
 
 ---
 
