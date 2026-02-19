@@ -1,11 +1,13 @@
+@use "@/styles/variables" as *;
+
 .forecast {
   margin-top: 40px;
 
   &__title {
+    margin-bottom: 24px;
     text-align: center;
     font-size: 20px;
     font-weight: 600;
-    margin-bottom: 24px;
   }
 
   &__chart {

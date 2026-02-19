@@ -4,15 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Forecast } from "@/types/Forecast";
 import { fetchForecast } from "@/lib/api/fetchForecast";
 import { getNext24HoursForecast } from "@/lib/utils/getTodayForecast";
-import {
-  AreaChart,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-  Area,
-  LabelList,
-} from "recharts";
+import { AreaChart, XAxis, YAxis, Tooltip, ResponsiveContainer, Area, LabelList } from "recharts";
 
 import styles from "./TemperatureForecast.module.scss";
 
@@ -27,19 +19,15 @@ const TemperatureForecast = ({ city, country }: Props) => {
     queryFn: () => fetchForecast(city, country),
   });
 
-  if (isLoading)
-    return <p className={styles["forecast__status"]}>Loading forecast...</p>;
+  if (isLoading) return <p className={styles["forecast__status"]}>Loading forecast...</p>;
 
-  if (error || !data)
-    return <p className={styles["forecast__status"]}>Forecast error</p>;
+  if (error || !data) return <p className={styles["forecast__status"]}>Forecast error</p>;
 
   const forecastData = getNext24HoursForecast(data);
 
   return (
     <div className={styles["forecast"]}>
-      <h3 className={styles["forecast__title"]}>
-        Today hourly temperature
-      </h3>
+      <h3 className={styles["forecast__title"]}>Today hourly temperature</h3>
 
       <div className={styles["forecast__chart"]}>
         <ResponsiveContainer>
@@ -69,10 +57,7 @@ const TemperatureForecast = ({ city, country }: Props) => {
                 boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
                 padding: "8px 12px",
               }}
-              formatter={(value) => [
-                `${Math.round(Number(value))}°C`,
-                "Temperature",
-              ]}
+              formatter={(value) => [`${Math.round(Number(value))}°C`, "Temperature"]}
             />
 
             <Area
@@ -88,9 +73,7 @@ const TemperatureForecast = ({ city, country }: Props) => {
               <LabelList
                 dataKey="temp"
                 position="top"
-                formatter={(value) =>
-                  `${Math.round(Number(value))}°`
-                }
+                formatter={(value) => `${Math.round(Number(value))}°`}
               />
             </Area>
           </AreaChart>

@@ -6,9 +6,7 @@ export default function NotFound() {
     <main className={styles["not-found"]}>
       <div className={styles["not-found__container"]}>
         <h1 className={styles["not-found__title"]}>404</h1>
-        <p className={styles["not-found__text"]}>
-          Page not found 🌧️
-        </p>
+        <p className={styles["not-found__text"]}>Page not found 🌧️</p>
         <Link href="/" className={styles["not-found__button"]}>
           Back to Home
         </Link>

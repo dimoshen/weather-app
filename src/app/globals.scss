@@ -1,8 +1,8 @@
-@use "../styles/reset.scss";
-@use "../styles/variables.scss";
+@use "@/styles/reset";
+@use "@/styles/variables" as *;
 
 body {
-  color: #1a1a1a;
+  color: $color-text;
 }
 
 .input-field {

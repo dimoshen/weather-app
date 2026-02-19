@@ -23,7 +23,7 @@ const Providers = ({ children }: { children: ReactNode }) => {
       {children}
       <Toaster position="top-center" />
     </QueryClientProvider>
-  )
+  );
 };
 
 export default Providers;

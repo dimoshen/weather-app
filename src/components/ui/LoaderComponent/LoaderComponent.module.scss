@@ -1,3 +1,5 @@
+@use "@/styles/variables" as *;
+
 .loader {
   display: flex;
   justify-content: center;
@@ -6,7 +8,7 @@
 
   &__icon {
     animation: spin 1s linear infinite;
-    color: #fbbc04;
+    color: $color-accent;
   }
 }
 

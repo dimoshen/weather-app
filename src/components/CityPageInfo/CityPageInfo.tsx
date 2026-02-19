@@ -3,9 +3,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchWeather } from "@/lib/api/fetchWeather";
 import TemperatureChart from "@/components/TemperatureForecast/TemperatureForecast";
-
-import styles from '@/components/CityPageInfo/CityPageInfo.module.scss'
 import LoaderComponent from "@/components/ui/LoaderComponent/LoaderComponent";
+
+import styles from "@/components/CityPageInfo/CityPageInfo.module.scss";
 
 interface Props {
   slug: string;
@@ -39,12 +39,8 @@ const CityPageInfo = ({ slug }: Props) => {
               />
 
               <div className={styles["city-page__info"]}>
-                <p className={styles["city-page__temp"]}>
-                  {Math.round(data.main.temp)}°C
-                </p>
-                <p className={styles["city-page__description"]}>
-                  {data.weather[0].description}
-                </p>
+                <p className={styles["city-page__temp"]}>{Math.round(data.main.temp)}°C</p>
+                <p className={styles["city-page__description"]}>{data.weather[0].description}</p>
               </div>
             </div>
 

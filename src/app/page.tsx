@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { City } from "@/types/City";
 import CityCard from "@/components/CityCard/CityCard";
+import CitySearchForm from "@/components/CitySearchFrom/CitySearchForm";
+import { City } from "@/types/City";
 
 import styles from "./page.module.scss";
-import CitySearchForm from "@/components/CitySearchFrom/CitySearchForm";
+
 
 export default function Home() {
   const [cities, setCities] = useState<City[]>([]);
@@ -36,11 +37,15 @@ export default function Home() {
 
         <CitySearchForm cities={cities} setCities={setCities} />
 
-        <div className={styles["home__cards"]}>
-          {cities.map(({ id, city, country }) => (
-            <CityCard key={id} id={id} city={city} country={country} onDelete={removeCity} />
-          ))}
-        </div>
+        {cities.length > 0 ? (
+          <div className={styles["home__cards"]}>
+            {cities.map(({ id, city, country }) => (
+              <CityCard key={id} id={id} city={city} country={country} onDelete={removeCity} />
+            ))}
+          </div>
+        ) : (
+          <h2 className={styles["home__subtitle"]}>Pick a city to see the forecast 🌤️</h2>
+        )}
       </div>
     </main>
   );

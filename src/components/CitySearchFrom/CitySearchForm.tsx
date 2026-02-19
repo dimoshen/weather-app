@@ -10,7 +10,7 @@ import { City } from "@/types/City";
 import { CitySuggestion } from "@/types/CitySuggestion";
 
 import styles from "@/components/CitySearchFrom/CitySearchForm.module.scss";
-import LoaderComponent from "@/components/ui/LoaderComponent/LoaderComponent";
+
 
 interface Props {
   cities: City[];
@@ -27,10 +27,9 @@ export const CitySearchForm = ({ cities, setCities }: Props) => {
     queryFn: async () => {
       const result = await searchCities(input);
 
-      return result.filter((city: CitySuggestion, index: number, self: CitySuggestion[]) =>
-        index === self.findIndex((c) =>
-            c.name === city.name && c.country === city.country
-        ),
+      return result.filter(
+        (city: CitySuggestion, index: number, self: CitySuggestion[]) =>
+          index === self.findIndex((c) => c.name === city.name && c.country === city.country),
       );
     },
     enabled: input.length > 2,
@@ -106,10 +105,7 @@ export const CitySearchForm = ({ cities, setCities }: Props) => {
         </ul>
       )}
       {selectedCity && (
-        <button
-          onClick={addCity}
-          className={styles["search-form__button"]}
-        >
+        <button onClick={addCity} className={styles["search-form__button"]}>
           Add
         </button>
       )}

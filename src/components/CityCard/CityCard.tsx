@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { fetchWeather } from "@/lib/api/fetchWeather";
@@ -8,7 +10,6 @@ import LoaderComponent from "@/components/ui/LoaderComponent/LoaderComponent";
 import { Weather } from "@/types/Weather";
 
 import styles from "./CityCard.module.scss";
-
 
 interface Props {
   id: string;
@@ -46,7 +47,9 @@ const CityCard = ({ id, city, country, onDelete }: Props) => {
       )}
       <div className={styles["city-card__actions"]}>
         {error || isLoading ? (
-          <span className={`${styles["city-card__button"]} ${styles["city-card__button--disabled"]}`}>
+          <span
+            className={`${styles["city-card__button"]} ${styles["city-card__button--disabled"]}`}
+          >
             Details
           </span>
         ) : (

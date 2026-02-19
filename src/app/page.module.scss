@@ -1,9 +1,11 @@
+@use "@/styles/variables" as *;
+
 .home {
   min-height: 100vh;
   padding: 40px 20px;
   display: flex;
   justify-content: center;
-  background: #f4f6f8;
+  background: $color-bg-main;
 
   &__container {
     width: 100%;
@@ -17,6 +19,13 @@
     font-size: 45px;
     font-weight: 700;
     margin-bottom: 30px;
+    text-align: center;
+  }
+
+  &__subtitle {
+    font-size: 35px;
+    font-weight: 600;
+    margin-top: 60px;
     text-align: center;
   }
 

@@ -1,5 +1,5 @@
 import { API_KEY } from "@/lib/constants";
-import {CitySuggestion} from "@/types/CitySuggestion";
+import { CitySuggestion } from "@/types/CitySuggestion";
 
 export async function searchCities(query: string): Promise<CitySuggestion[]> {
   const response = await fetch(

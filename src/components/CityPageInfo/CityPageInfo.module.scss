@@ -1,15 +1,17 @@
+@use "@/styles/variables" as *;
+
 .city-page {
   min-height: 100vh;
-  background: linear-gradient(180deg, #f5f7fa 0%, #e4ecf3 100%);
+  background: $color-bg-main;
   padding: 40px 20px;
 
   &__container {
     max-width: 900px;
     margin: 0 auto;
-    background: #ffffff;
+    background: $color-bg-card;
     border-radius: 24px;
     padding: 40px;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    box-shadow: $shadow-card;
   }
 
   &__title {
@@ -51,7 +53,7 @@
 
   &__description {
     font-size: 18px;
-    color: #666;
+    color: #666666;
     margin-top: 8px;
     text-transform: capitalize;
   }
