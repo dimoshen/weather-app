@@ -4,10 +4,10 @@ import { useQuery } from "@tanstack/react-query";
 import { AreaChart, XAxis, YAxis, Tooltip, ResponsiveContainer, Area, LabelList } from "recharts";
 import { fetchForecast } from "@/lib/api/fetchForecast";
 import { getNext24HoursForecast } from "@/lib/utils/getTodayForecast";
+import LoaderComponent from "@/components/ui/LoaderComponent/LoaderComponent";
 import { Forecast } from "@/types/Forecast";
 
 import styles from "./TemperatureForecast.module.scss";
-import LoaderComponent from "@/components/ui/LoaderComponent/LoaderComponent";
 
 interface Props {
   city: string;

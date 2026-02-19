@@ -1,36 +1,144 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌦 Weather App (Next.js)
 
-## Getting Started
+Single Page Application for viewing weather in selected cities.
 
-First, run the development server:
+---
+
+## 🚀 Live Demo
+
+👉 Deployed on Vercel  
+https://weather-cpbv4f663-dimoshens-projects.vercel.app/
+
+---
+
+## 📌 Features
+
+### 🏙 Cities List
+
+- Display cities as weather cards
+- Short weather info (temperature, description, icon)
+- Refresh button per card (updates only that city)
+- Delete city
+- Navigation to detailed page
+
+---
+
+### 🔎 Add City
+
+- Autocomplete suggestions (OpenWeather Geocoding API)
+- Duplicate prevention
+- Toast notifications
+- LocalStorage persistence
+
+---
+
+### 📄 Detailed Page
+
+- Current weather info
+- Hourly temperature forecast (next 24h)
+- Temperature chart using Recharts
+
+---
+
+### 🧪 Testing
+
+- Jest + Testing Library
+- Covers:
+    - Rendering
+    - Button interactions
+    - Delete logic
+    - Navigation
+    - Basic UI states
+
+---
+
+## 🛠 Tech Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- TanStack Query
+- SCSS (Sass)
+- Recharts
+- Lucide React
+- React Hot Toast
+- Jest + Testing Library
+
+---
+
+## 📦 Installation
+
+```bash
+git clone <repo-url>
+cd weather-app
+npm install
+```
+
+---
+
+## 🔑 Environment Variables
+
+Create a `.env.local` file in the root:
+
+```
+NEXT_PUBLIC_WEATHER_API_KEY=your_openweather_api_key
+```
+
+Get your API key from:  
+https://openweathermap.org/
+
+---
+
+## 🧑‍💻 Available Scripts
+
+### Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Runs the app at:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+### Build
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Production Start
 
-## Deploy on Vercel
+```bash
+npm run start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Lint
+
+```bash
+npm run lint
+```
+
+---
+
+### Format
+
+```bash
+npm run format
+```
+
+---
+
+### Run Tests
+
+```bash
+npm run test
+```

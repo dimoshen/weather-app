@@ -8,7 +8,7 @@ import { formatCityName } from "@/lib/utils/formatCityName";
 import { City } from "@/types/City";
 import { CitySuggestion } from "@/types/CitySuggestion";
 
-import styles from "@/components/CitySearchFrom/CitySearchForm.module.scss";
+import styles from "./CitySearchForm.module.scss";
 
 
 interface Props {

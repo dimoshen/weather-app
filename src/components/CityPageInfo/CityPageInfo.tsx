@@ -5,7 +5,7 @@ import { fetchWeather } from "@/lib/api/fetchWeather";
 import TemperatureChart from "@/components/TemperatureForecast/TemperatureForecast";
 import LoaderComponent from "@/components/ui/LoaderComponent/LoaderComponent";
 
-import styles from "@/components/CityPageInfo/CityPageInfo.module.scss";
+import styles from "./CityPageInfo.module.scss";
 
 interface Props {
   slug: string;
