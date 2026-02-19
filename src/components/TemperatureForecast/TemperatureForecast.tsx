@@ -1,12 +1,13 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { Forecast } from "@/types/Forecast";
+import { AreaChart, XAxis, YAxis, Tooltip, ResponsiveContainer, Area, LabelList } from "recharts";
 import { fetchForecast } from "@/lib/api/fetchForecast";
 import { getNext24HoursForecast } from "@/lib/utils/getTodayForecast";
-import { AreaChart, XAxis, YAxis, Tooltip, ResponsiveContainer, Area, LabelList } from "recharts";
+import { Forecast } from "@/types/Forecast";
 
 import styles from "./TemperatureForecast.module.scss";
+import LoaderComponent from "@/components/ui/LoaderComponent/LoaderComponent";
 
 interface Props {
   city: string;
@@ -19,9 +20,9 @@ const TemperatureForecast = ({ city, country }: Props) => {
     queryFn: () => fetchForecast(city, country),
   });
 
-  if (isLoading) return <p className={styles["forecast__status"]}>Loading forecast...</p>;
+  if (isLoading) return <LoaderComponent />;
 
-  if (error || !data) return <p className={styles["forecast__status"]}>Forecast error</p>;
+  if (error || !data) return <p className={styles["forecast__status"]}>Forecast error. Please, reload page.</p>;
 
   const forecastData = getNext24HoursForecast(data);
 

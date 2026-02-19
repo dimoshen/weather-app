@@ -1,6 +1,7 @@
 "use client";
 
 import { Loader2 } from "lucide-react";
+
 import styles from "./LoaderComponent.module.scss";
 
 interface Props {

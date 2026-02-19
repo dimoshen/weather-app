@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { fetchWeather } from "@/lib/api/fetchWeather";
 import { formatCityName } from "@/lib/utils/formatCityName";
-import RefreshIcon from "@/components/icons/RefreshIcon";
-import DeleteIcon from "@/components/icons/DeleteIcon";
+import RefreshIcon from "@/components/ui/icons/RefreshIcon";
+import DeleteIcon from "@/components/ui/icons/DeleteIcon";
 import LoaderComponent from "@/components/ui/LoaderComponent/LoaderComponent";
 import { Weather } from "@/types/Weather";
 

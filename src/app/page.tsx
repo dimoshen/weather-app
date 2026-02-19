@@ -7,7 +7,6 @@ import { City } from "@/types/City";
 
 import styles from "./page.module.scss";
 
-
 export default function Home() {
   const [cities, setCities] = useState<City[]>([]);
   const [isInitialized, setIsInitialized] = useState(false);

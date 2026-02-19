@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { Dispatch, SetStateAction } from "react";
+import { useState, Dispatch, SetStateAction } from "react";
 import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { searchCities } from "@/lib/api/searchCities";
