@@ -44,11 +44,11 @@ https://weather-app-dimoshens-projects.vercel.app/
 
 - Jest + Testing Library
 - Covers:
-    - Rendering
-    - Button interactions
-    - Delete logic
-    - Navigation
-    - Basic UI states
+  - Rendering
+  - Button interactions
+  - Delete logic
+  - Navigation
+  - Basic UI states
 
 ---
 

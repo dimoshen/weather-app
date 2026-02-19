@@ -22,7 +22,8 @@ const TemperatureForecast = ({ city, country }: Props) => {
 
   if (isLoading) return <LoaderComponent />;
 
-  if (error || !data) return <p className={styles["forecast__status"]}>Forecast error. Please, reload page.</p>;
+  if (error || !data)
+    return <p className={styles["forecast__status"]}>Forecast error. Please, reload page.</p>;
 
   const forecastData = getNext24HoursForecast(data);
 

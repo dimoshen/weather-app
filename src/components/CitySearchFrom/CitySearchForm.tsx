@@ -10,7 +10,6 @@ import { CitySuggestion } from "@/types/CitySuggestion";
 
 import styles from "./CitySearchForm.module.scss";
 
-
 interface Props {
   cities: City[];
   setCities: Dispatch<SetStateAction<City[]>>;

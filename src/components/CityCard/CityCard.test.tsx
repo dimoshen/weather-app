@@ -16,11 +16,7 @@ const renderWithClient = (ui: React.ReactElement) => {
     },
   });
 
-  return render(
-    <QueryClientProvider client={queryClient}>
-      {ui}
-    </QueryClientProvider>
-  );
+  return render(<QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>);
 };
 
 describe("CityCard", () => {
@@ -43,9 +39,7 @@ describe("CityCard", () => {
   });
 
   it("renders city name", () => {
-    renderWithClient(
-      <CityCard id="1" city="Paris" country="FR" onDelete={() => {}} />
-    );
+    renderWithClient(<CityCard id="1" city="Paris" country="FR" onDelete={() => {}} />);
 
     expect(screen.getByText("Paris, FR")).toBeInTheDocument();
   });
@@ -53,9 +47,7 @@ describe("CityCard", () => {
   it("calls onDelete when delete button is clicked", () => {
     const onDeleteMock = jest.fn();
 
-    renderWithClient(
-      <CityCard id="123" city="Paris" country="FR" onDelete={onDeleteMock} />
-    );
+    renderWithClient(<CityCard id="123" city="Paris" country="FR" onDelete={onDeleteMock} />);
 
     fireEvent.click(screen.getByLabelText("Delete"));
 
@@ -63,21 +55,11 @@ describe("CityCard", () => {
   });
 
   it("renders Details link with correct href", () => {
-    renderWithClient(
-      <CityCard
-        id="1"
-        city="Paris"
-        country="FR"
-        onDelete={() => {}}
-      />
-    );
+    renderWithClient(<CityCard id="1" city="Paris" country="FR" onDelete={() => {}} />);
 
     const link = screen.getByRole("link", { name: /details/i });
 
     expect(link).toBeInTheDocument();
-    expect(link).toHaveAttribute(
-      "href",
-      "/city/Paris-FR"
-    );
+    expect(link).toHaveAttribute("href", "/city/Paris-FR");
   });
 });

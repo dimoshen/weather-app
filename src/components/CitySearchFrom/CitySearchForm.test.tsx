@@ -22,7 +22,7 @@ describe("CitySearchForm", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <CitySearchForm cities={[]} setCities={setCities} />
-      </QueryClientProvider>
+      </QueryClientProvider>,
     );
 
     const input = screen.getByPlaceholderText("Enter city name");
